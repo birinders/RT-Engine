@@ -1,0 +1,134 @@
+void display()
+{
+
+    std::ofstream img("testing/antiAliasingTest.ppm");
+
+    // Viewport bits
+    // Adjusting the image dimensions-
+
+    const auto aspect_ratio = global_aspect_ratio;
+    const int img_width = global_width;
+    const int img_height = static_cast<int>(img_width / aspect_ratio);
+    const int samples_per_pixel = 100;
+    const int depth = 50;
+
+    // Create the World-
+    HittableList world;
+    world.add(make_shared<Sphere>(Point3(0, -101, -1), 100.5));
+    world.add(make_shared<Sphere>(Point3(0, 0, -1.0), 0.5));
+
+    /*world.add(make_shared<Sphere>(Point3(-1.0, 0, -1.0), 0.5));
+    world.add(make_shared<Sphere>(Point3(1.0, 0, -1.0), 0.5));*/
+
+    /*world.add(make_shared<Sphere>(Point3(0.4, 0.5, -1), 0.25));
+    world.add(make_shared<Sphere>(Point3(-0.4, 0.5, -1), 0.25));
+    world.add(make_shared<Sphere>(Point3(0, 0, -0.5), 0.1));*/
+
+    /////////////////////////
+    // Creating the Camera //
+    /////////////////////////
+
+    //auto viewport_height = 2.0;
+    //auto viewport_width = aspect_ratio * viewport_height;
+    //auto focal_length = 1;
+
+    //auto origin = Point3(0.0, 0.0, 0.0);
+    //auto horizontal = Vec3(viewport_width, 0.0, 0.0);
+    //auto vertical = Vec3(0.0, viewport_height, 0.0);
+
+    //auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - Vec3(0.0, 0.0, focal_length);
+    //auto lower_right_corner = origin + horizontal / 2 - vertical / 2 - Vec3(0.0, 0.0, focal_length);
+    //auto top_left_corner = origin - horizontal / 2 + vertical / 2 - Vec3(0.0, 0.0, focal_length);
+
+    //auto center = origin - Vec3(0.0, 0.0, focal_length);
+
+    //Vec3 test_unit = unit_vector(lower_left_corner);
+
+
+    ///////////////////////////////////////
+    //Camera cam = Camera(Point3(camera_origin_x, camera_origin_y, camera_origin_z));
+    ///////////////////////////////////////
+
+
+    //////// Rendering ////////
+
+    RenderInitFile(img, img_width, img_height, 255);
+    for (int j = 0; j < img_height; j++)
+        //for (int j = img_height - 1; j >= 0; j--)
+    {
+        std::cerr << "Scanlines Remaining : " << img_height - j << "\n";
+
+        for (int i = 0; i < img_width; i++)
+        {
+
+            Color pixel_color(0, 0, 0);
+
+            for (int s = 0; s < samples_per_pixel; s++)
+            {
+                auto u = (i + randomDouble()) / (img_width + 1);
+                auto v = (j + randomDouble()) / (img_height + 1);
+                Ray r = cam.getRay(u, v);
+                pixel_color += RayColorWorld(r, world, depth);
+            }
+
+            DisplayColorGlutAntiAliased(pixel_color, i, img_height - j, samples_per_pixel);
+            glFlush();
+            //WriteColorToFileAntiAliased(img, pixel_color, samples_per_pixel);
+
+            //Color pixel_color = ColorRaySphereNormals(r);
+            //Color pixel_color = RayColorWorld(r, world);
+            // Color all_white = Color(1.0, 1.0, 1.0);
+            //DisplayColorGlut(pixel_color, i, img_height - j);
+
+
+        }
+    }
+    glFlush();
+    std::cout << "\n\nOrigin : \n";
+    ShowRawValues(std::cerr, cam.origin);
+    std::cout << "Top Left Corner : \n";
+    ShowRawValues(std::cerr, cam.top_left_corner);
+    std::cout << "Focus : \n";
+    ShowRawValues(std::cerr, cam.focal_length_vector);
+    std::cout << "Fov : " << cam.fov;
+
+    // std::cout<<"Ray at top left corner = "<<ShowRawValues(std::cout, )
+    //std::cerr << "Done";
+}
+
+void mainLoop(int i, int j, int samples) {
+
+    RenderInitFile(img, global_width, global_height, 255);
+    for (int j = 0; j < img_height; j++)
+        //for (int j = img_height - 1; j >= 0; j--)
+    {
+        std::cerr << "Scanlines Remaining : " << img_height - j << "\n";
+
+        for (int i = 0; i < img_width; i++)
+        {
+
+            Color pixel_color(0, 0, 0);
+
+            for (int s = 0; s < samples_per_pixel; s++)
+            {
+                auto u = (i + randomDouble()) / (img_width + 1);
+                auto v = (j + randomDouble()) / (img_height + 1);
+                Ray r = cam.getRay(u, v);
+                pixel_color += RayColorWorld(r, world, depth);
+            }
+
+            DisplayColorGlutAntiAliased(pixel_color, i, img_height - j, samples_per_pixel);
+            glFlush();
+
+        }
+    }
+    glFlush();
+    std::cout << "\n\nOrigin : \n";
+    ShowRawValues(std::cerr, cam.origin);
+    std::cout << "Top Left Corner : \n";
+    ShowRawValues(std::cerr, cam.top_left_corner);
+    std::cout << "Focus : \n";
+    ShowRawValues(std::cerr, cam.focal_length_vector);
+    std::cout << "Fov : " << cam.fov;
+
+}
