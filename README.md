@@ -26,7 +26,7 @@ Another reason to choose C++ for me was that while I find myself working most co
 Since I worked with C++ before I ever switched to Python, now combined with the 3 years of understanding of the subject, I felt I had adequate knowledge to proceed and step out of my comfort zone, and build a project in another language.
 While python would've provided something for me in its standard modules (along with a beautiful GC), I believe this project taught me more than just Python ever would've alone.
 
-### The Result-
+## The Result-
 
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/0775cb15-bf94-4390-9cc9-b5316a86e72e" width="400">
@@ -34,7 +34,7 @@ While python would've provided something for me in its standard modules (along w
   <sub>A 800px wide, 16:9 render of 200+ spheres of all types, with 100x Anti Aliasing resampling and 50 reflects-per-ray<br>(Footage has been sped up by 30x)</sub>
 </p>
 
-#### The Final Render-
+### The Final Render-
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/52f3388a-3d63-43fd-a128-604cc82044e3" width="800">
   <br>
@@ -43,8 +43,9 @@ While python would've provided something for me in its standard modules (along w
 <!--![image](https://github.com/birinders/RT-Engine/assets/102192983/52f3388a-3d63-43fd-a128-604cc82044e3)-->
 
 <!--![random_world (2) (2)](https://github.com/birinders/RT-Engine/assets/102192983/0775cb15-bf94-4390-9cc9-b5316a86e72e)-->
-<br><br>
-Some Other Renders-
+<br>
+
+#### An Example of a real-time render-
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/014698a4-b4ed-41b9-8123-81a9d03af193" alt="Realtime Render" width="400">
   <br>
@@ -58,6 +59,8 @@ Some Other Renders-
   <sub>The associated STD::cerr Output</sub>
 </p>
 <br>
+
+<h3 align="center">Some other interesting interactions between materials-</h3><br>
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/7ea8e514-33dd-48fd-a73c-eec38df42cc7" alt="Cerr Output" width="600">
   <br>
