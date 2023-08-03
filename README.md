@@ -12,6 +12,9 @@ Glass (Dielectrics), Metals, Fuzzy (Matte) Metals, and Lambertian (solid) surfac
 
 This engine relies on vector mathematics, and can ray trace 3d shapes which can be expressed in the form of equations, like spheres and tori (doughnut shape). This engine can also export the renders in the form of PPM images, which can be converted to other formats by suitable means. 
 
+The camera itself is movable using W,A,S,D keys, and camera's orientation can be adjusted using I,J,K,L keys. Z and X keys control the height of the camera.
+Even though the camera is movable, it might still be impractical to do so due to the afore-mentioned slow rendering times.
+
 This version of the engine uses the OpenGL library just to output the rendered image to a screen. We can completely avoid using it if we use the built in image exporter, which exports the image as a PPM file instead of displaying it to a window. This completely eliminates the requirements of all external dependencies in the project.
 
 ### Why I made this project-
