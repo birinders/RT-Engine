@@ -13,12 +13,12 @@ Glass (Dielectrics), Metals, Fuzzy (Matte) Metals, and Lambertian (solid) surfac
 This engine relies on vector mathematics, and can ray trace 3d shapes which can be expressed in the form of equations, like spheres and tori (doughnut shape). This engine can also export the renders in the form of PPM images, which can be converted to other formats by suitable means. 
 
 The camera itself is movable using W,A,S,D keys, and camera's orientation can be adjusted using I,J,K,L keys. Z and X keys control the height of the camera.
-Even though the camera is movable, it might still be impractical to do so due to the afore-mentioned slow rendering times.
+Even though the camera is movable, it might still be impractical to do so due to the relatively slow rendering times.
 
-This version of the engine uses the OpenGL library just to output the rendered image to a screen. We can completely avoid using it if we use the built in image exporter, which exports the image as a PPM file instead of displaying it to a window. This completely eliminates the requirements of all external dependencies in the project.
+This version of the engine uses the OpenGL library just to output the rendered image to a screen. We can completely avoid using it if we use the built in image exporter, which exports the image as a PPM file instead of displaying it to a window. This completely eliminates the requirement of any and all external dependencies in the project.
 
 ### Why I made this project-
-I built this project as my Computer Graphics project submission in my 6th semester. The assignment required us to build any 2d project using the OpenGL toolkit for C++, but that fell short of my expectations, like almost cheating your way through a hurdle.
+I built this project as my Computer Graphics project submission in my 6th semester. The assignment required us to build any 2d project using the OpenGL toolkit for C++, but that fell short of my expectations, and didn't feel adequate for the task at hand.
 Since ray tracing in computer games always piqued my interest, this presented the perfect opportunity to integrate these common interests. Hence, it was decided that this project shall be built from ground up, with no external dependencies.
 
 This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti Aliasing Sampling with 50+ spheres of mixed types takes nearly 20 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ is the lack of GPU leverage, or even the other CPU cores, as the application is currently entirely single-threaded. We can make monumental speed gains by introducing multi-processing into the program, such that each individual process is responsible for rendering its own independent part of the frame.
@@ -50,18 +50,20 @@ While python would've provided something for me in its standard modules (along w
 
 #### An Example of a real-time render-
 <p align="center">
-  <img src="https://github.com/birinders/RT-Engine/assets/102192983/014698a4-b4ed-41b9-8123-81a9d03af193" alt="Realtime Render" width="400">
+  <img src="https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac" alt="Realtime Render" width="800">
   <br>
-  <sub>A realtime render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>Slight Colour details may have been lost due to GIF compression</sub>
+  <sub>A realtime render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>STD::Cerr output on the right side<br>(slight colour details may have been lost due to GIF compression)</sub>
 </p>
 <br>
-
+<!--![ezgif com-optimize](https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac)-->
+<!--
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/4a68f214-f239-4431-be5b-351d1ed00695" alt="Cerr Output" width="400">
   <br>
   <sub>The associated STD::cerr Output</sub>
 </p>
 <br>
+-->
 
 <h3 align="center">Some other interesting interactions between materials-</h3><br>
 <p align="center">
