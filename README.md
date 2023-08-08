@@ -3,7 +3,7 @@
 ## Update 1.1-
 ### Parallel Processing has been deployed into the project and is currently LIVE!
 As mentioned in the initial project notes, a multiprocessing solution was under review for this project. Finally after reviewing the project status and cross-validating relevant race conditions, parallel processing is now live in the project.
-This has reduced computational times by over 10x for more complicated scenes (exact figures may vary by your CPU cores), and over 14x for lesser populated scenes! Exact speedups will be posted in a few days for some of the renders displayed underneath.
+This has reduced computational times by over 10x for more complicated scenes (exact figures may vary by your CPU cores), and over 6x for lesser populated scenes! Exact speedups will be posted in a few days for some of the renders displayed underneath.
 
 --------------------------------
 This is a basic Ray-Tracing Engine I've implemented from the absolute ground up in C++.
