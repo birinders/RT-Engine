@@ -1,5 +1,11 @@
 # RT-Engine, C++
 
+## Update 1.1-
+### Parallel Processing has been deployed into the project and is currently LIVE!
+As mentioned in the initial project notes, a multiprocessing solution was under review for this project. Finally after reviewing the project status and cross-validating relevant race conditions, parallel processing is now live in the project.
+This has reduced computational times by over 10x for more complicated scenes (exact figures may vary by your CPU cores), and over 14x for lesser populated scenes! Exact speedups will be posted in a few days for some of the renders displayed underneath.
+
+
 This is a basic Ray-Tracing Engine I've implemented from the absolute ground up in C++.
 The Engine is capable of accurately ray tracing shapes like spheres, and any other shape(s) that can be represented by mathematical equations.
 
@@ -20,6 +26,9 @@ This version of the engine uses the OpenGL library just to output the rendered i
 ### Why I made this project-
 I built this project as my Computer Graphics project submission in my 6th semester. The assignment required us to build any 2d project using the OpenGL toolkit for C++, but that didn't feel adequate for the opportunity at hand.
 Since ray tracing in computer games always piqued my interest, this presented the perfect opportunity to integrate these common interests. Hence, it was decided that this project shall be built from ground up, with no external dependencies.
+
+### Reminder- The multiprocessing update has been deployed! 
+(Run the '''git pull''' command to update your version)
 
 This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types takes nearly 20 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ is the lack of GPU leverage, or even the other CPU cores, as the application is currently entirely single-threaded. We can make monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame.
 Therefore, while Python would've significantly cut down on the development time, the project would've been practically unusable at Python's runtime speed.
