@@ -28,7 +28,7 @@ I built this project as my Computer Graphics project submission in my 6th semest
 Since ray tracing in computer games always piqued my interest, this presented the perfect opportunity to integrate these common interests. Hence, it was decided that this project shall be built from ground up, with no external dependencies.
 
 ### Reminder- The multiprocessing update has been deployed! 
-(Run the '''git pull''' command to update your version)
+(Run the '''git pull''' command to update your version, or find it in the "Releases" section)
 
 This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types took nearly 30 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ was the lack of GPU leverage, or even the other CPU cores, as the application was then entirely single-threaded. 
 Now with version 1.1, we have made monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame. This has bumped up the efficiency by over 8 fold, and now a 1080p image with *over 200 spheres* at 100x anti-aliasing takes just under 4 minutes to render.
