@@ -97,6 +97,10 @@ While python would've provided something for me in its standard modules (along w
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/019647aa-c9ea-4851-9690-92da3d41adab" alt="Cerr Output" width="600">
   <br>
   <sub>Same Metal Sphere, instead placed along the upper inside edge of a dense glass sphere</sub>
+  <br><br><br>
+  <img src="https://github.com/birinders/RT-Engine/assets/102192983/741a0e1d-5811-48cc-a35a-1a909c210581" alt="Cerr Output" width="1000">
+  <br>
+  <sub>A 36:9 ultrawide shot of the random scene</sub>
   
   
 </p>
@@ -107,7 +111,10 @@ While python would've provided something for me in its standard modules (along w
 ![image](https://github.com/birinders/RT-Engine/assets/102192983/9e45ec80-44e0-4e8e-b148-37c8a1f6004a)
 
 ![image](https://github.com/birinders/RT-Engine/assets/102192983/7ea8e514-33dd-48fd-a73c-eec38df42cc7)
-![image](https://github.com/birinders/RT-Engine/assets/102192983/b6e12aad-c39a-4965-9c29-292497c9ef45)-->
+![image](https://github.com/birinders/RT-Engine/assets/102192983/b6e12aad-c39a-4965-9c29-292497c9ef45)
+
+![image](https://github.com/birinders/RT-Engine/assets/102192983/741a0e1d-5811-48cc-a35a-1a909c210581)
+
 
 <!--![3_spheres_output (2)](https://github.com/birinders/RT-Engine/assets/102192983/014698a4-b4ed-41b9-8123-81a9d03af193)-->
 <!--![3_spheres_cmd](https://github.com/birinders/RT-Engine/assets/102192983/4a68f214-f239-4431-be5b-351d1ed00695)-->
