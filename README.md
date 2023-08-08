@@ -30,7 +30,9 @@ Since ray tracing in computer games always piqued my interest, this presented th
 ### Reminder- The multiprocessing update has been deployed! 
 (Run the '''git pull''' command to update your version)
 
-This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types takes nearly 20 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ is the lack of GPU leverage, or even the other CPU cores, as the application is currently entirely single-threaded. We can make monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame.
+This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types took nearly 30 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ was the lack of GPU leverage, or even the other CPU cores, as the application was then entirely single-threaded. 
+Now with version 1.1, we have made monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame. This has bumped up the efficiency by over 8 fold, and now a 1080p image with *over 200 spheres* at 100x anti-aliasing takes just under 4 minutes to render.
+
 Therefore, while Python would've significantly cut down on the development time, the project would've been practically unusable at Python's runtime speed.
 Hence, C++ was my language of choice for this project.
 
@@ -61,7 +63,7 @@ While python would've provided something for me in its standard modules (along w
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac" alt="Realtime Render" width="800">
   <br>
-  <sub>A realtime render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>STD::Cerr output on the right side<br>(slight colour details may have been lost due to GIF compression)</sub>
+  <sub>A realtime single-threaded render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>STD::Cerr output on the right side<br>(slight colour details may have been lost due to GIF compression)</sub>
 </p>
 <br>
 <!--![ezgif com-optimize](https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac)-->
