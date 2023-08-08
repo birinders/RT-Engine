@@ -2,8 +2,9 @@
 #include <fstream>
 #include <GL/glut.h>
 
-#include<thread>
-#include<functional>
+#include <thread>
+#include <functional>
+#include <omp.h>
 //#include <Eigen/Dense>
 
 #include "rt_project.h"
@@ -279,9 +280,9 @@ void display()
     /*world.add(make_shared<Sphere>(Point3(-1.0, 0, -1.0), 0.5));
     world.add(make_shared<Sphere>(Point3(1.0, 0, -1.0), 0.5));*/
 
-    /*world.add(make_shared<Sphere>(Point3(0.4, 0.5, -1), 0.25));
-    world.add(make_shared<Sphere>(Point3(-0.4, 0.5, -1), 0.25));
-    world.add(make_shared<Sphere>(Point3(0, 0, -0.5), 0.1));*/
+    //world.add(make_shared<Sphere>(Point3(0.4, 0.5, -1), 0.25, material_left));
+    //world.add(make_shared<Sphere>(Point3(-0.4, 0.5, -1), 0.25, material_right));
+    //world.add(make_shared<Sphere>(Point3(0, 0, -0.5), 0.1, material_center));
 
     /////////////////////////
     // Creating the Camera //
@@ -311,11 +312,22 @@ void display()
 
     //////// Rendering ///////////////////////////////////////////////////////////////
 
-    RenderInitFile(img, img_width, img_height, 255);
+    //RenderInitFile(img, img_width, img_height, 255);
+
+    // Here's an array to store all the pixel values temporarily-
+    Color** results = new Color*[img_height];
+    for (int i = 0; i < img_height; ++i) {
+        results[i] = new Color[img_width];
+    }
+    //std::vector<std::vector<Color>> results(img_height, std::vector<Color>(img_width, Color(0,0,0)));
+    int scanlines = 0;
+
+    #pragma omp parallel for
     for (int j = 0; j < img_height; j++)
     //for (int j = img_height - 1; j >= 0; j--)
     {
-        std::cerr << "Scanlines Remaining : " << img_height - j << "\n";
+        std::cerr << "Scanlines Processed : " << ++scanlines <<"/" << img_height << "\t\t";
+        std::cerr << "Processing Scanline - " << img_height - j << "\n";
 
         for (int i = 0; i < img_width; i++)
         {
@@ -329,9 +341,11 @@ void display()
                 Ray r = cam.getRay(u, v);
                 pixel_color += RayColorWorld(r, random_world, depth);
             }
+            //#pragma omp critical
+            results[j][i] = pixel_color;
 
-            DisplayColorGlutAntiAliased(pixel_color, i, img_height - j, samples_per_pixel);
-            glFlush();
+            //DisplayColorGlutAntiAliased(pixel_color, i, img_height - j, samples_per_pixel);
+            //glFlush();
 
             //std::cerr << "u: ";
             //ShowRawValues(std::cerr, cam.u);
@@ -349,6 +363,14 @@ void display()
 
         }
     }
+    for (int j = 0; j < img_height; j++) {
+        std::cerr << "Printing Scanline : " << img_height - j << "\n";
+        for (int i = 0; i < img_width; i++) {
+            DisplayColorGlutAntiAliased(results[j][i], i, img_height - j, samples_per_pixel);
+            //glFlush();
+        }
+    }
+
     glFlush();
     std::cout << "\n\nOrigin : \n";
     ShowRawValues(std::cerr, cam.origin);

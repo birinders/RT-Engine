@@ -117,7 +117,7 @@ HittableList metal_in_glass() {
     auto ground_material = make_shared<Lambertian>(Color(0.5, 0.7, 0.9));
     world.add(make_shared<Sphere>(Point3(0, -1000, 0), 1000, ground_material));
 
-    auto glass_sphere = make_shared<Dielectric>(1);
+    auto glass_sphere = make_shared<Dielectric>(1.4);
     world.add(make_shared<Sphere>(Point3(0, 5, 0), 3, glass_sphere));
     //world.add(make_shared<Sphere>(Point3(0, 5, 0), -2.8, glass_sphere));
 

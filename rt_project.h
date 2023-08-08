@@ -12,7 +12,7 @@ using std::shared_ptr;
 using std::make_shared;
 using std::sqrt;
 
-const int global_width = 800;
+const int global_width = 400;
 const auto global_aspect_ratio = 16.0/9.0;
 const auto global_height = static_cast<int>(global_width / global_aspect_ratio);
 
