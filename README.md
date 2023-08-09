@@ -30,8 +30,9 @@ Since ray tracing in computer games always piqued my interest, this presented th
 ### Reminder- The multiprocessing update has been deployed! 
 (Run the '''git pull''' command to update your version, or find it in the "Releases" section)
 
-This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1080p image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types took nearly 30 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ was the lack of GPU leverage, or even the other CPU cores, as the application was then entirely single-threaded. 
-Now with version 1.1, we have made monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame. This has bumped up the efficiency by over 8 fold, and now a 1080p image with *over 200 spheres* at 100x anti-aliasing takes just under 4 minutes to render.
+This engine is implemented in C++ due to the extremely strict performance requirements of the project. A 16:9, 1000px wide image at 100x Anti-Aliasing Sampling with 50+ spheres of mixed types took nearly 20 minutes to render a single frame in C++. Another reason for this relatively slow performance even in C++ was the lack of GPU leverage, or even the other CPU cores, as the application was then entirely single-threaded. 
+
+Now with version 1.1, we have made monumental speed gains by introducing multi-processing and parallelization into the program, such that each individual process is responsible for rendering its own independent part of the frame. This has bumped up the efficiency by over 8 fold, and now a 16:9, 1000px image with *over 200 spheres* at *100x anti-aliasing* takes just under 4 minutes to render.
 
 Therefore, while Python would've significantly cut down on the development time, the project would've been practically unusable at Python's runtime speed.
 Hence, C++ was my language of choice for this project.
@@ -45,7 +46,7 @@ While python would've provided something for me in its standard modules (along w
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/0775cb15-bf94-4390-9cc9-b5316a86e72e" width="400">
   <br>
-  <sub>A 800px wide, 16:9 render of 200+ spheres of all types, with 100x Anti Aliasing resampling and 50 reflects-per-ray<br>(Footage has been sped up by 30x)</sub>
+  <sub>A single-threaded render of an 800px wide, 16:9 scene of 200+ spheres of all types, with 100x Anti Aliasing resampling and 50 reflects-per-ray<br>(Footage has been sped up by 30x)</sub>
 </p>
 
 ### The Final Render-
