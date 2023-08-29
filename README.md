@@ -64,7 +64,7 @@ While python would've provided something for me in its standard modules (along w
 <p align="center">
   <img src="https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac" alt="Realtime Render" width="800">
   <br>
-  <sub>A realtime single-threaded render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>STD::Cerr output on the right side<br>(slight colour details may have been lost due to GIF compression)</sub>
+  <sub>A realtime single-threaded render of a 800px wide, 16:9 render of all 4 type of spheres (the ground itself is a lambertian sphere)<br>std::cerr output on the right side<br>(slight colour details may have been lost due to GIF compression)</sub>
 </p>
 <br>
 <!--![ezgif com-optimize](https://github.com/birinders/RT-Engine/assets/102192983/2c0f1363-ec5d-4f2d-9931-d5ebc99829ac)-->
